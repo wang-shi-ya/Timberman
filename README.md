@@ -1,0 +1,4 @@
+简单的timberman小游戏
+类型模仿stream上的Timberman
+
+仅用于学习
