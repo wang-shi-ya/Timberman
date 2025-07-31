@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{a35e0a18-df1b-494a-bff9-4c23701a1f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\graphics">
+      <UniqueIdentifier>{0cecb88b-fb26-4c62-86d4-71433dbc5279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\sound">
+      <UniqueIdentifier>{c00dd90e-2e40-4837-97fd-912774e3fb09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\fonts">
+      <UniqueIdentifier>{3f2dc4b8-1db6-4b05-a1bf-8500cdf8bdd0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Timberman.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="database.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="recordpanel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="branch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="axe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="setting.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="trunk.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="database.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="recordpanel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resource\graphics\327dc434e11916f94743e2a0eedb782.jpg">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\axe.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\background.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\bee.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\branch.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\cloud.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\log.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\moreaxe.jpg">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\player.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\rip.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\smallbee.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\testbackground.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\Theaxe1.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\tree - 副本.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\tree.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\tree2.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk1.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk2.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk3.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk4.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk5.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\trunk6.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+    <Image Include="..\resource\graphics\underlog.png">
+      <Filter>resource\graphics</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\resource\fonts\KOMIKAP_.ttf">
+      <Filter>resource\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\resource\sound\chop.wav">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\resource\sound\death.wav">
+      <Filter>resource\sound</Filter>
+    </Media>
+    <Media Include="..\resource\sound\out_of_time.wav">
+      <Filter>resource\sound</Filter>
+    </Media>
+  </ItemGroup>
+</Project>
