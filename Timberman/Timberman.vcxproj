@@ -143,11 +143,11 @@
     <ClInclude Include="recordpanel.h" />
     <ClInclude Include="rip.h" />
     <ClInclude Include="database.h" />
-    <ClInclude Include="setting.h" />
+    <ClInclude Include="settingpanel.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="trunk.h" />
-    <ClInclude Include="sound.h" />
+    <ClInclude Include="audio.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resource\graphics\327dc434e11916f94743e2a0eedb782.jpg" />
@@ -180,6 +180,7 @@
     <Font Include="..\resource\fonts\KOMIKAP_.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="..\resource\sound\backgroundmusic.wav" />
     <Media Include="..\resource\sound\chop.wav" />
     <Media Include="..\resource\sound\death.wav" />
     <Media Include="..\resource\sound\out_of_time.wav" />

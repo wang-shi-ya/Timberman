@@ -1,27 +1,32 @@
-#pragma once
-#include<SFML/Graphics.hpp>
 class Axe {
-private:
-	sf::Texture axeTexture; // 斧头纹理
-	sf::Sprite axeSprite; // 斧头精灵
 public:
-	bool isAxeActive = false; // 斧头是否激活
-	void loadTexture(const std::string& texturepath) {
-		if (!axeTexture.loadFromFile(texturepath)) {
-			throw std::runtime_error("Failed to load branch texture");
-		}
-		axeSprite.setTexture(axeTexture);
-	}
-	void setPosition(float x, float y) {
-		axeSprite.setPosition(x,y);
-	}
-	void setScale(float x,float y) {
-		axeSprite.setScale(x, y);
-	}
-	void setOrgin() {
-		axeSprite.setOrigin(axeTexture.getSize().x / 2, 0);
-	}
-	void showAxe(sf::RenderWindow& window)const {
-		window.draw(axeSprite);
-	}
+    sf::Sprite sprite;
+    sf::Texture texture;
+    bool isAxeActive = false;
+    bool isVisible = false; // 新增：控制斧头是否可见
+
+    float axeVisibleTime = 0.0f;
+    const float AXE_VISIBLE_DURATION = 0.1f; // 斧头显示时间（秒）
+
+    void loadTexture(const std::string& filename) {
+        if (!texture.loadFromFile(filename)) {
+            throw std::runtime_error("Failed to load axe texture");
+        }
+        sprite.setTexture(texture);
+        sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
+    }
+
+    void setPosition(float x, float y) {
+        sprite.setPosition(x, y);
+    }
+
+    void setScale(float x, float y) {
+        sprite.setScale(x, y);
+    }
+
+    void showAxe(sf::RenderWindow& window) {
+        if (isVisible) { // 只有可见时才渲染
+            window.draw(sprite);
+        }
+    }
 };

@@ -1,10 +1,10 @@
-#pragma once
 #ifndef RECORDPANEL_H
 #define RECORDPANEL_H
 
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <tuple> 
 #include "database.h"
 
 class RecordPanel {

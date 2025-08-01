@@ -4,7 +4,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "sound.h"
+#include"audio.h"
 #include "branch.h"
 #include "player.h"
 #include "tree.h"
@@ -14,7 +14,7 @@
 #include "time.h"
 #include "button.h"
 #include"trunk.h"
-#include "setting.h"
+#include "settingpanel.h"
 #include "database.h"
 #include "recordpanel.h"
 
@@ -24,23 +24,27 @@ int main() {
     std::uniform_int_distribution<> dist(0, 2);
 
     //初始化数据库 
+
     Database db;
     if (!db.connect("localhost", "root", "HBsc75820306@", "timberman")) {
         std::cerr << "Failed to connect to database" << std::endl;
         return -1;
     }
 
-    //创建表
+    // 创建表（如果不存在）
     db.execute("CREATE TABLE IF NOT EXISTS scores ("
         "id INT AUTO_INCREMENT PRIMARY KEY, "
         "score INT NOT NULL, "
         "player_name VARCHAR(50) DEFAULT 'Player', "
         "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
 
+
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Timber!!!", sf::Style::Resize);
     sf::Texture backgroundTexture;
     backgroundTexture.loadFromFile("resource/graphics/background.png");
     sf::Sprite backgroundSprite(backgroundTexture);
+
+    Audio audio;
 
     Player player;
     player.loadPlayer("resource/graphics/player.png");
@@ -120,6 +124,7 @@ int main() {
     std::stringstream scoreStream;
     std::vector<Log> flyingLogs;
 
+    int addscoreNum = 0;
     while (window.isOpen()) {
         time.updateDt();
         sf::Event event;
@@ -138,12 +143,21 @@ int main() {
                 }
             }
 
+            // 在主循环的事件处理部分修改设置面板的处理逻辑
             if (isInSettings) {
                 if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                     isInSettings = false;
                 }
                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                    isInSettings = false;
+                    sf::Vector2f mousePos(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y));
+
+                    // 先尝试处理按钮点击
+                    bool buttonClicked = settingPanel.handleClick(mousePos, audio);
+
+                    // 如果没有点击任何按钮，且点击了背景区域，才返回主菜单
+                    if (!buttonClicked && settingPanel.isBackgroundClicked(mousePos)) {
+                        isInSettings = false;
+                    }
                 }
                 continue;
             }
@@ -197,6 +211,7 @@ int main() {
                 isPaused = !isPaused;
                 messageText.setString(isPaused ? "Game is paused!" : "");
                 if (!isPaused) {
+                    addscoreNum = 0;
                     isGameOver = false;
                     branch.initialize();
                     player.isPlayerDead = false;
@@ -216,9 +231,12 @@ int main() {
                     player.setScale(1, 1);
                     branch.setPlayerSide(Branch::BranchState::RIGHT);
                     branch.updateBranches(score);
-                    axe.setPosition(1100, 850);
+                    axe.setPosition(1020, 830);
                     axe.setScale(1, 1);
                     axe.isAxeActive = true;
+                    axe.isVisible = true;
+                    //播放砍树音效
+                    audio.playTimberAudio();
                     Log newLog;
                     newLog.setPosition(810, 750);
                     newLog.setOrgin(newLog.logSprite.getTexture()->getSize().x / 2, newLog.logSprite.getTexture()->getSize().y / 2);
@@ -239,9 +257,11 @@ int main() {
                     player.setScale(-1, 1);
                     branch.setPlayerSide(Branch::BranchState::LEFT);
                     branch.updateBranches(score);
-                    axe.setPosition(880, 850);
+                    axe.setPosition(880, 830);
                     axe.setScale(-1, 1);
                     axe.isAxeActive = true;
+                    axe.isVisible = true;
+                    audio.playTimberAudio();
                     Log newLog;
                     newLog.setPosition(810, 750);
                     newLog.setOrgin(newLog.logSprite.getTexture()->getSize().x / 2, newLog.logSprite.getTexture()->getSize().y / 2);
@@ -254,9 +274,7 @@ int main() {
                     scoreStream.str(""); scoreStream << "Score = " << score;
                     scoreText.setString(scoreStream.str());
                 }
-                else {
-                    axe.isAxeActive = false;
-                }
+                
             }
         }
 
@@ -264,7 +282,15 @@ int main() {
             time.update();
             branch.update(time.dt.asSeconds());
 
-            for (auto it = flyingLogs.begin(); it != flyingLogs.end();) {
+            // 更新斧头显示时间
+            if (axe.isVisible) {
+                axe.axeVisibleTime += time.dt.asSeconds();
+                if (axe.axeVisibleTime >= axe.AXE_VISIBLE_DURATION) {
+                    axe.isVisible = false;
+                    axe.axeVisibleTime = 0.0f;
+                }
+            }
+            for (auto it = flyingLogs.begin(); it != flyingLogs.end();) {//存储飞出的树干
                 if (it->logActive) {
                     it->logSprite.move(it->logSpeedX * time.dt.asSeconds(), it->logSpeedY * time.dt.asSeconds());
                     auto pos = it->logSprite.getPosition();
@@ -303,9 +329,17 @@ int main() {
             isPaused = true;
             acceptInput = false;
 
-            // Save score to database
-            db.addScore(score);
+            // 保存分数到数据库
+            // 确保每次游戏结束都保存分数
+            while (addscoreNum < 1) {
+                db.addScore(score);
+                ++addscoreNum;
+            }
+            
+            recordPanel.updateRecords(db);
         }
+
+        audio.playBackgroundMusic();
 
         window.clear();
         window.draw(backgroundSprite);
@@ -325,7 +359,7 @@ int main() {
             else if (isInRecords) {
                 recordPanel.draw(window);
 
-                // Add back button
+                // 添加返回按钮
                 Button backButton;
                 backButton.init(font, "BACK", 50, sf::Vector2f(960, 850));
                 backButton.draw(window);
@@ -341,7 +375,9 @@ int main() {
             if (!player.isPlayerDead) {
                 player.showplayer(window);
                 if (axe.isAxeActive) {
-                    axe.showAxe(window);
+                    if (axe.isVisible) { // 只有当斧头可见时才渲染
+                        axe.showAxe(window);
+                    }
                 }
                 time.showTimeBar(window);
             }
