@@ -23,7 +23,7 @@ public:
         background.setSize(sf::Vector2f(text.getLocalBounds().width + 40, text.getLocalBounds().height + 40));
         background.setOrigin(background.getSize().x / 2, background.getSize().y / 2);
         background.setPosition(position);
-        background.setFillColor(sf::Color(50, 50, 50, 200));
+        background.setFillColor(sf::Color(50, 50, 50, 0));
     }
 
     // 添加 setText 方法
@@ -42,4 +42,6 @@ public:
     bool isClicked(const sf::Vector2f& mousePos) const {
         return background.getGlobalBounds().contains(mousePos);
     }
+    //如果按钮被点击会变小后变大
+
 };

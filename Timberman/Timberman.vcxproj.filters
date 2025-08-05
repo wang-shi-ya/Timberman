@@ -80,6 +80,12 @@
     <ClInclude Include="recordpanel.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="font.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="text.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resource\graphics\327dc434e11916f94743e2a0eedb782.jpg">
@@ -156,6 +162,36 @@
     <Font Include="..\resource\fonts\KOMIKAP_.ttf">
       <Filter>resource\fonts</Filter>
     </Font>
+    <Font Include="C:\WINDOWS\Fonts\STFANGSO.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIAL.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIBLK.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALN.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALBD.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALBI.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALI.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALNB.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALNBI.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
+    <Font Include="C:\WINDOWS\Fonts\ARIALNI.TTF">
+      <Filter>resource\fonts</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\resource\sound\chop.wav">
@@ -170,5 +206,10 @@
     <Media Include="..\resource\sound\backgroundmusic.wav">
       <Filter>resource\sound</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\settings.cfg">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

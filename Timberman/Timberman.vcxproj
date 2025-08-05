@@ -138,12 +138,14 @@
     <ClInclude Include="background.h" />
     <ClInclude Include="branch.h" />
     <ClInclude Include="button.h" />
+    <ClInclude Include="font.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="recordpanel.h" />
     <ClInclude Include="rip.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="settingpanel.h" />
+    <ClInclude Include="text.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="tree.h" />
     <ClInclude Include="trunk.h" />
@@ -178,12 +180,25 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\resource\fonts\KOMIKAP_.ttf" />
+    <Font Include="C:\WINDOWS\Fonts\ARIAL.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALBD.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALBI.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALI.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALN.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALNB.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALNBI.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIALNI.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\ARIBLK.TTF" />
+    <Font Include="C:\WINDOWS\Fonts\STFANGSO.TTF" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\resource\sound\backgroundmusic.wav" />
     <Media Include="..\resource\sound\chop.wav" />
     <Media Include="..\resource\sound\death.wav" />
     <Media Include="..\resource\sound\out_of_time.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\settings.cfg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

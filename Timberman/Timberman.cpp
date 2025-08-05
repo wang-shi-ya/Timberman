@@ -94,6 +94,7 @@ int main() {
     bool isPaused = true, isGameOver = false, acceptInput = false, isGameStarted = false;
     bool isInSettings = false, isInRecords = false;
 
+    //****************字体******************//
     sf::Font font;
     if (!font.loadFromFile("resource/fonts/KOMIKAP_.ttf")) {
         std::cerr << "Failed to load font" << std::endl;
